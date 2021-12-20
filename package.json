@@ -4,6 +4,9 @@
   "main": "index.js",
   "repository": "git@github.com:yorch-JMG/registro-guias-api.git",
   "author": "Jorge <jorgeMG@jorgemdev.com>",
+  "scripts": {
+    "dev": "nodemon src/index.ts"
+  },
   "license": "MIT",
   "dependencies": {
     "@types/cors": "^2.8.12",
@@ -18,5 +21,8 @@
     "morgan": "^1.10.0",
     "mysql": "^2.18.1",
     "node-waf": "^1.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
   }
 }
