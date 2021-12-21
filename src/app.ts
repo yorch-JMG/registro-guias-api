@@ -2,8 +2,9 @@ import express, {Application} from "express";
 import jwt from "jsonwebtoken";
 import morgan from "morgan";
 import cors from 'cors';
-
 import loginRouter from "./routes/auth";
+import guidesRouter from "./routes/guides";
+
 export class App {
   
   private app: Application;
@@ -22,6 +23,8 @@ export class App {
     this.app.use(morgan('dev'));
     this.app.use(cors())
     this.app.use("/auth", loginRouter);
+    this.app.use("/guides", guidesRouter);
+    
   }
 
   async listen() {
