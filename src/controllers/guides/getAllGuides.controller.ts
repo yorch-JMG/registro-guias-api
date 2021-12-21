@@ -2,7 +2,7 @@ import { Response, Request} from "express";
 import { connection } from "../../connection";
 import mysql from "mysql";
 
-export const getAllGuidesController = (req : Request, res : Response) => {
+export const getAllGuides = (req : Request, res : Response) => {
   
   const queryString = "SELECT * FROM guia";
   

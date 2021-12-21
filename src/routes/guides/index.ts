@@ -1,10 +1,10 @@
 import { Router } from "express";
-import { getAllGuidesController} from "../../controllers/guides/getAllGuides.controller";
-import { registerGuideController} from "../../controllers/guides/registerGuide.controller";
+import { getAllGuides} from "../../controllers/guides/getAllGuides.controller";
+import { registerGuide} from "../../controllers/guides/registerGuide.controller";
 export const guidesRouter : Router = Router();
 
-guidesRouter.get('/', getAllGuidesController)
+guidesRouter.get('/', getAllGuides)
 
-guidesRouter.post('/register', registerGuideController)
+guidesRouter.post('/register', registerGuide)
 
 export default guidesRouter;

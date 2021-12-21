@@ -2,7 +2,7 @@ import { Response, Request} from "express";
 import { connection } from "../../connection";
 import mysql from "mysql";
 
-export const registerGuideController = (req : Request, res : Response) => {
+export const registerGuide = (req : Request, res : Response) => {
   const {idGuia, 
          nombre1, 
          nombre2, 
