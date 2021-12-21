@@ -1,6 +1,6 @@
 import { Response, Request} from "express";
 import { connection } from "../../connection";
-import mysql from "mysql";
+import mysql from "mysql2";
 
 export const getAllGuides = (req : Request, res : Response) => {
   
@@ -10,7 +10,7 @@ export const getAllGuides = (req : Request, res : Response) => {
 
   connection.query(query, (err, result) => {
     if(err) throw err;
-    if(result.length === 0) res.status(401).json("no hay guias que mostrar")
+    if(result === null) res.status(401).json("no hay guias que mostrar")
     else{
       const guides = result;
       res.status(200).json(guides);

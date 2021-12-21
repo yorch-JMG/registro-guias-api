@@ -1,7 +1,8 @@
 import { Response, Request } from "express";
 import { connection } from "../../connection";
-import mysql from "mysql";
+import mysql from "mysql2";
 import jwt from "jsonwebtoken";
+
 export const logInController = (req : Request, res : Response) => {
   const {username, password} = req.body;
   
@@ -11,9 +12,9 @@ export const logInController = (req : Request, res : Response) => {
 
   connection.query(query, (err, result) => {
     if(err) throw err;
-    if(result.length === 0) res.status(401).json("no hay usuario con esos parametros")
+    if(result === null) res.status(401).json("no hay usuario con esos parametros")
     else{
-      const user = result[0]["username"];
+      const user = (result as any)[0]["username"];
       const token = jwt.sign({user}, 
                              process.env.TOKEN_SECRET as string, 
                              {expiresIn: process.env.TOKEN_LIFESPAN});

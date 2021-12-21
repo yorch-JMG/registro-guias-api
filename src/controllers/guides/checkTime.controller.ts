@@ -1,6 +1,6 @@
 import { Response, Request} from "express";
 import { connection } from "../../connection";
-import mysql from "mysql";
+import mysql from "mysql2";
 
 export const checkTime = (req : Request, res : Response) => {
   const { idGuia } = req.body;
@@ -8,7 +8,7 @@ export const checkTime = (req : Request, res : Response) => {
   const query = mysql.format(queryString, [idGuia]);
   connection.query(query, (err, result) => {
     if(err) throw err;
-    if(result.length === 0) res.status(401).json("No hay check in para este id");
+    if(result === null) res.status(401).json("No hay check in para este id");
     else{
       res.status(200).json(result);
     }
