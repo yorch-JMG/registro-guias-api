@@ -1,6 +1,6 @@
 import { Router } from "express";
-import { getAllGuidesController} from "../../controllers/guides/getAllGuidesController";
-import { registerGuideController} from "../../controllers/guides/registerGuideController";
+import { getAllGuidesController} from "../../controllers/guides/getAllGuides.controller";
+import { registerGuideController} from "../../controllers/guides/registerGuide.controller";
 export const guidesRouter : Router = Router();
 
 guidesRouter.get('/', getAllGuidesController)
