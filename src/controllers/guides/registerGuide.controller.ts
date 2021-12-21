@@ -1,6 +1,6 @@
 import { Response, Request} from "express";
 import { connection } from "../../connection";
-import mysql from "mysql";
+import mysql from "mysql2";
 
 export const registerGuide = (req : Request, res : Response) => {
   const {idGuia, 
@@ -29,7 +29,7 @@ export const registerGuide = (req : Request, res : Response) => {
                               genero]);
   connection.query(query, (err, result) => {
     if(err) throw err;
-    if(result.length === 0) res.status(401).json("No se pudo insertar en tabla guia");
+    if(result === null) res.status(401).json("No se pudo insertar en tabla guia");
     else{
       res.status(200).json(result);
     }
