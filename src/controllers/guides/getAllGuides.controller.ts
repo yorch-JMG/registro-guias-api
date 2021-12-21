@@ -4,7 +4,7 @@ import mysql from "mysql2";
 
 export const getAllGuides = (req : Request, res : Response) => {
   
-  const queryString = "SELECT * FROM guia";
+  const queryString = "call getGuiasInfo();";
   
   const query = mysql.format(queryString, []);
 
