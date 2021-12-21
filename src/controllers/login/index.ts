@@ -2,7 +2,6 @@ import { Response, Request } from "express";
 import { connection } from "../../connection";
 import mysql from "mysql";
 import jwt from "jsonwebtoken";
-import {User} from "../../models/User";
 export const logInController = (req : Request, res : Response) => {
   const {username, password} = req.body;
   
