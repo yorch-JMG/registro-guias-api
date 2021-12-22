@@ -4,6 +4,7 @@ import morgan from "morgan";
 import cors from 'cors';
 import loginRouter from "./routes/auth";
 import guidesRouter from "./routes/guides";
+import reportsRouter from "./routes/reports/report";
 
 export class App {
   
@@ -24,6 +25,7 @@ export class App {
     this.app.use(cors())
     this.app.use("/auth", loginRouter);
     this.app.use("/guides", guidesRouter);
+    this.app.use("/reports", reportsRouter);
     
   }
 
