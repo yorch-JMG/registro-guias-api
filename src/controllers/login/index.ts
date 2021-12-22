@@ -14,11 +14,7 @@ export const logInController = (req : Request, res : Response) => {
     if(err) throw err;
     if(result === null) res.status(401).json("no hay usuario con esos parametros")
     else{
-      const user = (result as any)[0]["username"];
-      const token = jwt.sign({user}, 
-                             process.env.TOKEN_SECRET as string, 
-                             {expiresIn: process.env.TOKEN_LIFESPAN});
-      res.json(token);
+      res.json({"nada":"nada"});
     };
 
 
