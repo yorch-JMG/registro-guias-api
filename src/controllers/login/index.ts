@@ -12,7 +12,7 @@ export const logInController = (req : Request, res : Response) => {
 
   connection.query(query, (err, result) => {
     if(err) throw err;
-    if(result === null) res.status(401).json("no hay usuario con esos parametros")
+    if((result as []).length === 0) res.status(401).json("no hay usuario con esos parametros")
     else{
       const user = (result as any)[0]["username"];
       const token = jwt.sign({user}, 
