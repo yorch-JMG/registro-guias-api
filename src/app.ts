@@ -2,6 +2,7 @@ import express, {Application} from "express";
 import jwt from "jsonwebtoken";
 import morgan from "morgan";
 import cors from 'cors';
+import cookies from 'cookie-parser';
 import loginRouter from "./routes/auth";
 import guidesRouter from "./routes/guides";
 import reportsRouter from "./routes/reports/report";
@@ -20,6 +21,7 @@ export class App {
   }
 
   middlewares() {
+    this.app.use(cookies())
     this.app.use(express.json())
     this.app.use(morgan('dev'));
     this.app.use(cors())
