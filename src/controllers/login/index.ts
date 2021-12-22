@@ -14,7 +14,8 @@ export const logInController = async (req : Request, res : Response) => {
     if(err) throw err;
     if((result as []).length === 0) res.status(401).json("no hay usuario con esos parametros")
     else{
-      res.status(200).json({result});
+      let token = jwt.sign((result as any)[0]["username"], process.env.TOKEN_SECRET as string)
+      res.status(200).json({token});
       };
     });
 };
