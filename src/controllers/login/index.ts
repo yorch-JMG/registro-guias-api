@@ -3,7 +3,7 @@ import { connection } from "../../connection";
 import mysql from "mysql2";
 import jwt from "jsonwebtoken";
 
-export const logInController = (req : Request, res : Response) => {
+export const logInController = async (req : Request, res : Response) => {
   const {username, password} = req.body;
   
   const queryString = "SELECT * FROM admin WHERE username = ? AND password = ?";
@@ -18,9 +18,7 @@ export const logInController = (req : Request, res : Response) => {
       const token = jwt.sign({user}, 
                              process.env.TOKEN_SECRET as string, 
                              {expiresIn: process.env.TOKEN_LIFESPAN});
-      res.json(token);
+      res.cookie("token",token,{httpOnly: true}).status(200).json(token)
     };
-
-
     });
 };
