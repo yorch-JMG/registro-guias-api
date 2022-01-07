@@ -27,12 +27,20 @@ export const registerGuide = (req : Request, res : Response) => {
                               servicio,
                               horasRealizadas,
                               genero]);
-  connection.query(query, (err, result) => {
-    if(err) throw err;
-    if(result === null) res.status(401).json("No se pudo insertar en tabla guia");
-    else{
-      res.status(200).json(result);
-    }
+  connection.query(query, (err, result : any) => {
+    setTimeout(() => {
+      if(err){
+        console.error(err.message)
+        return res.status(401).json(err.message)
+      }
+      
+      if(result === null) res.status(401).json("No se pudo registar el guía");
+      else{
+        console.log(result);
+        
+        res.status(200).json(result);
+      }
+    }, 1000);
   });
 
 };
